@@ -1,4 +1,4 @@
-sys = require 'sys'
+sys = require 'util'
 express = require 'express'
 fs = require 'fs'
 io = require 'socket.io'
