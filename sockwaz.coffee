@@ -32,5 +32,10 @@ class Sockwaz
         stream.on 'data', (tweet) ->
           client.broadcast.emit 'tweet', JSON.stringify tweet
 
+    @socket.sockets.on 'connection', (client) ->
+        tw.stream 'statuses/filter', settings.list_get , (stream) ->
+            stream.on 'data', (tweet) ->
+              client.broadcast.emit 'tweet_list', JSON.stringify tweet
+
 sockwaz = new Sockwaz()
 sockwaz.listen()
